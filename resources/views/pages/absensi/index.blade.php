@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Users')
+@section('title', 'Attendances')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -11,25 +11,25 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Users</h1>
-                <div class="section-header-button">
-                    <a href="{{ route('users.create') }}" class="btn btn-primary">Add New</a>
-                </div>
+                <h1>Attendances</h1>
+                {{-- <div class="section-header-button">
+                    <a href="{{ route('attendances.create') }}" class="btn btn-primary">Add New</a>
+                </div> --}}
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Users</a></div>
-                    <div class="breadcrumb-item">All Users</div>
+                    <div class="breadcrumb-item"><a href="#">Attendances</a></div>
+                    <div class="breadcrumb-item">All Attendances</div>
                 </div>
             </div>
             <div class="section-body">
                 <div class="row">
-                    <div class="col-12">
+                    {{-- <div class="col-12">
                         @include('layouts.alert')
-                    </div>
+                    </div> --}}
                 </div>
-                <h2 class="section-title">Users</h2>
+                <h2 class="section-title">Attendances</h2>
                 <p class="section-lead">
-                    You can manage all Users, such as editing, deleting and more.
+                    You can manage all Attendances, such as editing, deleting and more.
                 </p>
 
 
@@ -42,9 +42,9 @@
                             <div class="card-body">
 
                                 <div class="float-right">
-                                    <form method="GET" action="{{ route('users.index') }}">
+                                    <form method="GET" action="{{ route('attendances.index') }}">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search" name="name">
+                                            <input type="text" class="form-control" placeholder="Search by patient name" name="name">
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                                             </div>
@@ -59,36 +59,44 @@
                                         <tr>
 
                                             <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Position</th>
-                                            <th>Created At</th>
+                                            <th>Date</th>
+                                            <th>Time In</th>
+                                            <th>Time Out</th>
+                                            <th>Latlong In</th>
+                                            <th>Latlong Out</th>
+
                                             <th>Action</th>
                                         </tr>
-                                        @foreach ($users as $user)
+                                        @foreach ($attendances as $attendance)
                                             <tr>
 
-                                                <td>{{ $user->name }}
+                                                <td>{{ $attendance->user->name }}
                                                 </td>
                                                 <td>
-                                                    {{ $user->email }}
+                                                    {{ $attendance->date }}
                                                 </td>
                                                 <td>
-                                                    {{ $user->phone }}
+                                                    {{ $attendance->time_in }}
                                                 </td>
                                                 <td>
-                                                    {{ $user->position }}
+                                                    {{ $attendance->time_out }}
                                                 </td>
-                                                <td>{{ $user->created_at }}</td>
+                                                <td>
+                                                    {{ $attendance->latlon_in }}
+                                                </td>
+                                                <td>
+                                                    {{ $attendance->latlon_out }}
+                                                </td>
+
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <a href='{{ route('users.edit', $user->id) }}'
+                                                        <a href='{{ route('attendances.edit', $attendance->id) }}'
                                                             class="btn btn-sm btn-info btn-icon">
                                                             <i class="fas fa-edit"></i>
                                                             Edit
                                                         </a>
 
-                                                        <form action="{{ route('users.destroy', $user->id) }}"
+                                                        <form action="{{ route('attendances.destroy', $attendance->id) }}"
                                                             method="POST" class="ml-2">
                                                             <input type="hidden" name="_method" value="DELETE" />
                                                             <input type="hidden" name="_token"
@@ -106,7 +114,7 @@
                                     </table>
                                 </div>
                                 <div class="float-right">
-                                    {{ $users->withQueryString()->links() }}
+                                    {{ $attendances->withQueryString()->links() }}
                                 </div>
                             </div>
                         </div>
