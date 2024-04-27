@@ -1,10 +1,10 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="{{ route('users.index') }}">Absensi</a>
+            <a href="{{ route('home') }}">Absensi</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="{{ route('users.index') }}">AB</a>
+            <a href="{{ route('home') }}">AB</a>
         </div>
         <ul class="sidebar-menu">
 
@@ -31,6 +31,12 @@
                 </a>
             </li>
 
-        </ul>
+            <li class="nav-item">
+                <a href="{{ route('permissions.index') }}" class="nav-link">
+                    <i class="fas fa-columns"></i>
+                    <span>Permission</span>
+                </a>
+            </li>
+
     </aside>
 </div>
