@@ -1,6 +1,7 @@
 # FIC16 Absensi - Laravel Backend - Muhammad Ridwan Hakim]
 
 Backend: Laravel 11
+
 Frontend: Flutter
 
 ## Screenshots
@@ -32,7 +33,6 @@ Frontend: Flutter
 ### API Check Out
 
 ![https://i.ibb.co/x1R4P8n/fic16-api-checkout.png](https://i.ibb.co/x1R4P8n/fic16-api-checkout.png)
-
 
 ### API Update Profile
 
